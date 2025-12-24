@@ -28,7 +28,11 @@ class FrameworkAwareStorage(StorageInterface):
             return None
             
         # Framework-specific session access
-        if hasattr(request, 'session'):  # FastAPI
+        # Check for Django first (has session and META attributes)
+        if hasattr(request, 'session') and hasattr(request, 'META'):
+            self._logger.debug("Django session found")
+            return request.session
+        elif hasattr(request, 'session'):  # FastAPI
             self._logger.debug("FastAPI session found")
             return request.session
         elif hasattr(request, 'environ'):  # Flask

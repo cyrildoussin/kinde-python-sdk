@@ -1,0 +1,1 @@
+Django support for Kinde Python SDK
