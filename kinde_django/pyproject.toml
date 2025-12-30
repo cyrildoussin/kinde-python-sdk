@@ -31,6 +31,6 @@ requires = ["setuptools >= 61.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["kinde_django", "kinde_django.framework", "kinde_django.middleware", "kinde_django.storage"]
+packages = ["kinde_django", "kinde_django.framework", "kinde_django.middleware", "kinde_django.storage", "kinde_django.templatetags"]
 package-dir = {"kinde_django" = "."}
 

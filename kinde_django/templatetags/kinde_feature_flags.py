@@ -11,9 +11,7 @@ register = template.Library()
 
 
 def flag_is_active(request, flag_name):
-    print(f'Checking flag {flag_name}')
     flag = async_to_sync(feature_flags.get_flag)(flag_name)
-    print(f'Flag {flag_name} is {flag.value}')
     return flag.value
 
 
