@@ -1,8 +1,9 @@
 [project]
 name = "kinde-django"
-version = "0.1.0"
+version = "0.1.2"
 authors = [
     { name = "Kinde Engineering", email = "engineering@kinde.com" },
+    { name = "Cyril Doussin", email = "cdoussin@gmail.com" },
 ]
 description = "Django integration for the Kinde Python SDK"
 readme = "README.md"

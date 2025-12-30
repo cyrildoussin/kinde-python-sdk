@@ -1,5 +1,4 @@
-import asyncio
-
+from asgiref.sync import async_to_sync
 from django import template
 
 from kinde_sdk.auth import feature_flags
@@ -13,12 +12,7 @@ register = template.Library()
 
 def flag_is_active(request, flag_name):
     print(f'Checking flag {flag_name}')
-    try:
-        loop = asyncio.get_event_loop()
-    except RuntimeError:
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-    flag = loop.run_until_complete(feature_flags.get_flag(flag_name))
+    flag = async_to_sync(feature_flags.get_flag)(flag_name)
     print(f'Flag {flag_name} is {flag.value}')
     return flag.value
 
