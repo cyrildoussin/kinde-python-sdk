@@ -40,8 +40,6 @@ class KindeFlagNode(template.Node):
             name = self.name
         if not name:
             name = self.name
-        print(f'Checking flag {name}')
-        print('result:', self.condition(context.get('request', None), name))
         if self.condition(context.get('request', None), name):
             return self.nodelist_true.render(context)
         return self.nodelist_false.render(context)
